@@ -78,6 +78,7 @@ for item in results:
         index=[0]
     )
     df = pd.concat([df, new_data], ignore_index=True)
+
 df['date'] = df['pubDate'].dt.date
 
 print(df.head())
