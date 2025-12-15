@@ -81,6 +81,9 @@ for item in results:
 
 # 날짜 전처리 + 날짜별 기사 수 집계 (AI활용)
 
+# API 호출 결과인 data 변수에서 'items' 키만 뽑아야 합니다.
+df = pd.DataFrame(data['items']) 
+
 # 1) 날짜 형식으로 변환(정규화)
 df['pubDate'] = pd.to_datetime(df['pubDate'])
 
