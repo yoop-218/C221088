@@ -82,10 +82,10 @@ for item in results:
 # 날짜 전처리 + 날짜별 기사 수 집계 (AI활용)
 
 # 1) 날짜 형식으로 변환(정규화)
-df['clean_date'] = pd.to_datetime(df['pubDate'])
+df['pubDate'] = pd.to_datetime(df['pubDate'])
 
 # 2) 날짜별로 묶어서 개수 세기
-daily_counts = df.groupby(df['clean_date'].dt.date).size()
+daily_counts = df.groupby(df['pubDate'].dt.date).size()
 
 # 결과 확인(선택)
 print(daily_counts)
