@@ -108,3 +108,4 @@ konlpy
 pandas
 streamlit
 plotly
+wordcloud
