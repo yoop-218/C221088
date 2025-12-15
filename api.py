@@ -78,20 +78,7 @@ for item in results:
         index=[0]
     )
     df = pd.concat([df, new_data], ignore_index=True)
-
-# 날짜 전처리 + 날짜별 기사 수 집계 (AI활용)
-
-# API 호출 결과인 data 변수에서 'items' 키만 뽑아야 합니다.
-df = pd.DataFrame(data['items']) 
-
-# 1) 날짜 형식으로 변환(정규화)
-df['pubDate'] = pd.to_datetime(df['pubDate'])
-
-# 2) 날짜별로 묶어서 개수 세기
-daily_counts = df.groupby(df['pubDate'].dt.date).size()
-
-# 결과 확인(선택)
-print(daily_counts)
+df['date'] = df['pubDate'].dt.date
 
 print(df.head())
 
