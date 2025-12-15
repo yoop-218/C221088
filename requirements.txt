@@ -104,3 +104,7 @@ wcwidth==0.2.14
 widgetsnbextension==4.0.15
 xlrd==2.0.2
 xyzservices==2025.10.0
+konlpy
+pandas
+streamlit
+plotly
