@@ -55,3 +55,47 @@ print(f"총 데이터 개수: {len(results)}")
 
 # 일부 데이터 출력
 results[:3]
+
+# 데이터프레임 변환 및 저장
+
+from datetime import datetime
+import re
+
+# 저장할 빈 데이터프레임 생성
+df = pd.DataFrame()
+
+# 문자열에서 제거할 tag를 지정
+remove_tags = re.compile(r'<.*?>')
+
+# 검색 결과에서 필요한 정보 추출
+for item in results:
+    new_data = pd.DataFrame(
+        data={
+            'pubDate': datetime.strptime(item['pubDate'], '%a, %d %b %Y %H:%M:%S +0900'),
+            'title': re.sub(remove_tags, '', item['title']),
+            'description': re.sub(remove_tags, '', item['description'])
+        },
+        index=[0]
+    )
+    df = pd.concat([df, new_data], ignore_index=True)
+
+# 날짜 전처리 + 날짜별 기사 수 집계 (AI활용)
+
+# 1) 날짜 형식으로 변환(정규화)
+df['clean_date'] = pd.to_datetime(df['pubDate'])
+
+# 2) 날짜별로 묶어서 개수 세기
+daily_counts = df.groupby(df['clean_date'].dt.date).size()
+
+# 결과 확인(선택)
+print(daily_counts)
+
+print(df.head())
+
+# 데이터 정보 확인
+df.info()
+
+# CSV 파일로 저장
+os.makedirs('data', exist_ok=True)
+df.to_csv('data/naver_news.csv', index=False, encoding='utf-8')
+print('CSV 파일로 저장 완료: data/naver_news.csv')
