@@ -16,7 +16,7 @@ num_data = 1000         # 검색할 데이터 개수
 sort = 'date'           # 정렬 기준 (date: 날짜순, sim: 유사도순)
 
 # 검색할 단어와 URL 설정
-encText = urllib.parse.quote("서울시 부동산")
+encText = urllib.parse.quote("케이팝 데몬 헌터스")
 
 # 결과를 저장할 list 생성
 results = []
