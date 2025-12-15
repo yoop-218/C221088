@@ -1,6 +1,6 @@
+# 네이버 API를 이용한 데이터 수집
 import os
 import sys
-sys.path.append(r"C:\Users\USER\Desktop\25-2\데이터시각화")  # my_apikeys.py 파일이 있는 경로
 import my_apikeys as mykeys
 import urllib.request
 import pandas as pd
