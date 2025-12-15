@@ -109,3 +109,4 @@ pandas
 streamlit
 plotly
 wordcloud
+networkx
